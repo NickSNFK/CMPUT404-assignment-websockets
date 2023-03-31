@@ -85,12 +85,11 @@ def subscribe_socket(ws):
        websocket and read updates from the websocket '''
     myWorld.add_client(ws)
     try:
-
         while not ws.closed:
             message = ws.receive()
-            if message is not None:
+            if message:
+                print('MESSAGE',message)
                 entity = json.loads(message)
-                print(entity)
                 # myWorld.set(entity)
     finally:
         myWorld.remove_client(ws)
