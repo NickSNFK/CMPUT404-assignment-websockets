@@ -333,9 +333,9 @@ function wsSetup() {
     };
     socket.onmessage = function(msg) {
         try {
-            debug("WebSocket Recv:" + msg.data);
+            debug("WebSocket Recv:" + msg);
             //XXX: TODO What are you going to do here?
-            updateWorld(JSON.parse(msg.data))
+            updateWorld(JSON.parse(msg))
         } catch (e) {
             alert("socket on message: " + e);
         }
