@@ -83,7 +83,7 @@ def read_ws(ws,client):
 def subscribe_socket(ws):
     '''Fufill the websocket URL of /subscribe, every update notify the
        websocket and read updates from the websocket '''
-    myWorld.add_client(set_listener)
+    myWorld.add_client(ws)
     try:
 
         while not ws.closed:
