@@ -59,3 +59,5 @@ Contributors
 * Mark Galloway
 * Abram Hindle
 * Cole Mackenzie
+
+sockets.py, index.html, index.css is LICENSE'D under the Apache 2 license by Nicholas Wielgus.

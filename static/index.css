@@ -1,0 +1,23 @@
+.options {
+  position: fixed;
+}
+
+button{
+  width: 200px;
+  height: 75px;
+  border-radius: 20px;
+  font-size: x-large;
+  background-color: cornsilk;
+  margin: 5px;
+}
+
+fieldset{
+  width: 200px;
+  border: none;
+  margin: 5px;
+}
+
+label{
+  color: white;
+  font-size: large;
+}
