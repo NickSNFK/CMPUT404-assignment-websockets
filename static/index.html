@@ -183,11 +183,8 @@ function getPosition(e) {
 function addEntity(entity, data) {
     world[entity] = data;
     console.log(entity)
-    const mess = {
-        entity: {
-            ...data
-        }
-    }
+    const mess = {}
+    mess[entity] = data
     socket.send(JSON.stringify(mess));
     //sendJSONXMLHTTPRequest('/entity/'+entity,data,null,'POST')
 }
