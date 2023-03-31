@@ -312,8 +312,7 @@ function update() {
 }
 
 function updateWorld(entity){
-    console.log(keys)
-    const key = entity.keys()[0]
+    const key = Object.keys(entity)[0]
     world[key] = entity[key];
 }
 
