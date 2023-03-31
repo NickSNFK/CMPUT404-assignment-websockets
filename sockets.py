@@ -88,9 +88,12 @@ def subscribe_socket(ws):
         while not ws.closed:
             message = ws.receive()
             if message:
+                print(message)
                 entity = json.loads(message)
                 for key in entity.keys():
                     myWorld.set(key,entity['key'])
+    except Exception as e:
+        print(e)
     finally:
         myWorld.remove_client(ws)
 
