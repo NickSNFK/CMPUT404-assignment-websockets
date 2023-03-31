@@ -52,8 +52,12 @@ class World:
 
     def update_listeners(self, entity):
         '''update the set listeners'''
+        entity = {
+            entity: self.get(entity)
+        }
         for client in self.clients:
-            client.send(str(self.get(entity)))
+            print(entity)
+            client.send(str(entity))
 
     def clear(self):
         self.space = dict()
