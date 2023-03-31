@@ -32,10 +32,13 @@ class World:
     def __init__(self):
         self.clear()
         # we've got listeners now!
-        self.listeners = list()
+        self.clients = set()
 
-    def add_set_listener(self, listener):
-        self.listeners.append( listener )
+    def add_client(self, client):
+        self.clients.add(client)
+
+    def remove_client(self, client):
+        self.clients.remove(client)
 
     def update(self, entity, key, value):
         entry = self.space.get(entity,dict())
@@ -49,8 +52,8 @@ class World:
 
     def update_listeners(self, entity):
         '''update the set listeners'''
-        for listener in self.listeners:
-            listener(entity, self.get(entity))
+        for client in self.clients:
+            client.send(self.get(entity))
 
     def clear(self):
         self.space = dict()
@@ -63,10 +66,11 @@ class World:
 
 myWorld = World()
 
-def set_listener( entity, data ):
+def set_listener(entity, data ):
     ''' do something with the update ! '''
 
-myWorld.add_set_listener( set_listener )
+
+myWorld.add_client( set_listener )
 
 @app.route('/')
 def hello():
@@ -84,10 +88,18 @@ def read_ws(ws,client):
 def subscribe_socket(ws):
     '''Fufill the websocket URL of /subscribe, every update notify the
        websocket and read updates from the websocket '''
-    while not ws.closed:
-        message = ws.receive()
-        if message is not None:
-            print('Received message: {}'.format(message))
+    myWorld.add_client(set_listener)
+    try:
+
+        while not ws.closed:
+            message = ws.receive()
+            if message is not None:
+                entity = json.loads(message)
+                print(entity)
+                # myWorld.set(entity)
+    finally:
+        myWorld.remove_client(ws)
+
 
 
 # I give this to you, this is how you get the raw body/data portion of a post in flask
