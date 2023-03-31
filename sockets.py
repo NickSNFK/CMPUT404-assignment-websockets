@@ -90,8 +90,8 @@ def subscribe_socket(ws):
             if message:
                 entity = json.loads(message)
                 for key in entity.keys():
-                    print(key,entity[key])
-                    myWorld.set(key,entity[key])
+                    print(key,entity.get(key))
+                    myWorld.set(key,entity.get(key))
     except Exception as e:
         print(e.with_traceback())
     finally:
