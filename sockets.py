@@ -89,8 +89,8 @@ def subscribe_socket(ws):
             message = ws.receive()
             if message:
                 entity = json.loads(message)
-                print(entity)
-                myWorld.set(entity)
+                for key in entity.keys():
+                    myWorld.set(key,entity['key'])
     finally:
         myWorld.remove_client(ws)
 
