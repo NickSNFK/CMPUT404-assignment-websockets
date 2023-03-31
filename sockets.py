@@ -56,7 +56,7 @@ class World:
             entity: self.get(entity)
         }
         for client in self.clients:
-            client.send(str(entity))
+            client.send(json.dumps(entity))
 
     def clear(self):
         self.space = dict()
