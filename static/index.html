@@ -310,9 +310,7 @@ function update() {
 }
 
 function updateWorld(entity){
-    console.log(entity)
     world[entity] = data;
-    console.log(world)
 }
 
 function getWorld(newWorld){
@@ -326,7 +324,7 @@ function wsSetup() {
     socket.onopen = function() {
         //XXX: TODO What are you going to do here?
         debug("WebSocket Open");
-        sendJSONXMLHTTPRequest('/world',null,updateWorld,'GET');
+        sendJSONXMLHTTPRequest('/world',null,getWorld,'GET');
     };
     socket.onerror = function(msg) {
         debug("WebSocket Error:" + msg.data);

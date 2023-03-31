@@ -89,7 +89,6 @@ def subscribe_socket(ws):
             message = ws.receive()
             if message:
                 print('MESSAGE',message)
-                entity = flask_post_json()
                 # myWorld.set(entity)
     finally:
         myWorld.remove_client(ws)
