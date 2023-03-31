@@ -89,6 +89,7 @@ def subscribe_socket(ws):
             message = ws.receive()
             if message:
                 entity = json.loads(message)
+                print(entity)
                 myWorld.set(entity)
     finally:
         myWorld.remove_client(ws)
