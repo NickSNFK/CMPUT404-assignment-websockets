@@ -182,6 +182,7 @@ function getPosition(e) {
 
 function addEntity(entity, data) {
     world[entity] = data;
+    console.log(entity)
     const mess = {
         entity: {
             ...data
