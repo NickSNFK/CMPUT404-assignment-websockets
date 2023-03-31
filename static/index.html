@@ -324,6 +324,7 @@ function wsSetup() {
     socket = new WebSocket(url);
     socket.onopen = function() {
         //XXX: TODO What are you going to do here?
+        debug("WebSocket Open");
         sendJSONXMLHTTPRequest('/world',null,updateWorld,'GET');
     };
     socket.onerror = function(msg) {
