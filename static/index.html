@@ -314,6 +314,7 @@ function update() {
 function updateWorld(entity){
     const key = Object.keys(entity)[0]
     world[key] = entity[key];
+    drawNextFrame();
 }
 
 function getWorld(newWorld){
