@@ -111,9 +111,10 @@ function drawCircle(context,entity) {
         var x = entity["x"];
         var y = entity["y"];
         //moveTo(x,y);
+        arc(x, y, (entity["radius"])?entity["radius"]:5, 0, 2.0 * Math.PI, false);
         fillStyle = entity["colour"];
         strokeStyle = fillStyle;
-        arc(x, y, (entity["radius"])?entity["radius"]:50, 0, 2.0 * Math.PI, false);
+        fill()
         stroke();
     }
 }
