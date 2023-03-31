@@ -182,7 +182,8 @@ function getPosition(e) {
 
 function addEntity(entity, data) {
     world[entity] = data;
-    socket.send(data);
+    console.log(entity+data)
+    socket.send(entity+data);
     //sendJSONXMLHTTPRequest('/entity/'+entity,data,null,'POST')
 }
 var counter = 0;
