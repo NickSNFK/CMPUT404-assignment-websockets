@@ -53,7 +53,7 @@ class World:
     def update_listeners(self, entity):
         '''update the set listeners'''
         for client in self.clients:
-            client.send(self.get(entity))
+            client.send(str(self.get(entity)))
 
     def clear(self):
         self.space = dict()
@@ -90,7 +90,6 @@ def subscribe_socket(ws):
             if message:
                 entity = json.loads(message)
                 for key in entity.keys():
-                    print(key,entity.get(key))
                     myWorld.set(key,entity.get(key))
     except Exception as e:
         print(e.with_traceback())
