@@ -182,7 +182,8 @@ function getPosition(e) {
 
 function addEntity(entity, data) {
     world[entity] = data;
-    sendJSONXMLHTTPRequest('/entity/'+entity,data,null,'POST')
+    socket.send(data);
+    //sendJSONXMLHTTPRequest('/entity/'+entity,data,null,'POST')
 }
 var counter = 0;
 function addEntityWithoutName(data) {
